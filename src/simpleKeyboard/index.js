@@ -40,7 +40,7 @@ class Keyboard extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <div className="digits">{this.state.digits}</div>
                 <div className="keyboard">
                     <div className="row">
@@ -95,7 +95,7 @@ class Keyboard extends React.Component {
                         {this.renderKeys(40)}
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

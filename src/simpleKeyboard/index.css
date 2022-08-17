@@ -11,17 +11,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
 }
 
 
 .digits {
-    height: 30px;
+    min-height: 30px;
+    width: 80vw;
+    max-width: 350px;
+    word-break: break-word;
     text-align: center;
     margin-bottom: 20px;
     font-size: 20px;
     font-weight: 500;
+    line-height: 20px;
     border-bottom: 1px solid #DCDCDC;
+    padding-bottom: 5px;
 }
 
 .keyboard {
