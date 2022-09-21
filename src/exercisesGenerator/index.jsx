@@ -5,8 +5,8 @@ class ExercisesGenerator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            exercise: '50 + 5',
-            result: '55',
+            exercise: '550 + 5',
+            result: '555',
             showResult: false,
         };
     }
@@ -16,15 +16,15 @@ class ExercisesGenerator extends React.Component {
             <>
                 <div className="content">
                     <div className="result-and-operations">
+                        <div className="exercise-result">
+                            <span>{this.state.result}</span>
+                            <span>{this.state.exercise}</span>
+                        </div>
                         <div className="operations">
                             <Operation name="+" onClick={() => {}}/>
                             <Operation name="-" onClick={() => {}}/>
                             <Operation name="x" onClick={() => {}}/>
                             <Operation name="÷" onClick={() => {}}/>
-                        </div>
-                        <div className="exercise-result">
-                            <span>{this.state.result}</span>
-                            <span>{this.state.exercise}</span>
                         </div>
                     </div>
                     <NewExerciseOrResult name="Novo exercício" onClick={() => {}}/>
