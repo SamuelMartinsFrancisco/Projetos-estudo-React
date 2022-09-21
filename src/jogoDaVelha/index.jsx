@@ -1,7 +1,7 @@
 // https://pt-br.reactjs.org/tutorial/tutorial.html
 
 import React from 'react';
-import './index.css';
+import './styles.css';
 
 function Square(props) {
         return (

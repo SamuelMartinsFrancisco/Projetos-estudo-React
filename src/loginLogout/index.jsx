@@ -1,7 +1,7 @@
 // https://pt-br.reactjs.org/docs/conditional-rendering.html
 
 import React from 'react';
-import './index.css';
+import './styles.css';
 
 ///////////////////////////////////////////////////
 
