@@ -5,10 +5,37 @@ class ExercisesGenerator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            values: [550, 5],
             exercise: '550 + 5',
             result: '555',
             showResult: false,
         };
+    }
+
+    handleOperation(operation) {
+        let result = this.state.values[0] + this.state.values[1];
+        let exercise = `${this.state.values[0]} + ${this.state.values[1]}`;
+
+        switch (operation) {
+            case '+':
+                result = this.state.values[0] + this.state.values[1];
+                exercise = `${this.state.values[0]} + ${this.state.values[1]}`;
+                break;
+            case '-':
+                result = this.state.values[0] - this.state.values[1];
+                exercise = `${this.state.values[0]} - ${this.state.values[1]}`;
+                break;
+            case 'x': 
+                result = this.state.values[0] * this.state.values[1];
+                exercise = `${this.state.values[0]} x ${this.state.values[1]}`;
+                break;
+            case '÷': 
+                result = this.state.values[0] / this.state.values[1];
+                exercise = `${this.state.values[0]} ÷ ${this.state.values[1]}`;
+                break;
+        }
+        // console.log(exercise + ' = ' + result);
+        return this.setState({exercise: exercise, result: result});
     }
 
     render() {
@@ -21,10 +48,10 @@ class ExercisesGenerator extends React.Component {
                             <span>{this.state.exercise}</span>
                         </div>
                         <div className="operations">
-                            <Operation name="+" onClick={() => {}}/>
-                            <Operation name="-" onClick={() => {}}/>
-                            <Operation name="x" onClick={() => {}}/>
-                            <Operation name="÷" onClick={() => {}}/>
+                            <Operation name="+" onClick={() => this.handleOperation('+') }/>
+                            <Operation name="-" onClick={() => this.handleOperation('-') }/>
+                            <Operation name="x" onClick={() => this.handleOperation('x') }/>
+                            <Operation name="÷" onClick={() => this.handleOperation('÷') }/>
                         </div>
                     </div>
                     <NewExerciseOrResult name="Novo exercício" onClick={() => {}}/>
