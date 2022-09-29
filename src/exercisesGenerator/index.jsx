@@ -14,9 +14,6 @@ class ExercisesGenerator extends React.Component {
     }
 
     handleOperation(operation) {
-        let result = this.state.values[0] + this.state.values[1];
-        let exercise = `${this.state.values[0]} + ${this.state.values[1]}`;
-    
         switch (operation) {
             case '+':
                 this.setState((state) => ({ exercise: `${state.values[0]} + ${state.values[1]}`, 
@@ -48,6 +45,7 @@ class ExercisesGenerator extends React.Component {
     }
 
     render() {
+
         return (
             <>
                 <div className="content">
@@ -58,10 +56,18 @@ class ExercisesGenerator extends React.Component {
                         </div>
 
                         <div className="operations">
-                            <Operation name="+" onClick={() => this.handleOperation('+')} />
-                            <Operation name="-" onClick={() => this.handleOperation('-')} />
-                            <Operation name="x" onClick={() => this.handleOperation('x')} />
-                            <Operation name="÷" onClick={() => this.handleOperation('÷')} />
+                            <Operation name="+" 
+                                       isChosen={ this.state.operation === '+' ? ' chosen' : '' } 
+                                       onClick={() => this.handleOperation('+')} />
+                            <Operation name="-" 
+                                       isChosen={ this.state.operation === '-' ? ' chosen' : '' } 
+                                       onClick={() => this.handleOperation('-')} />
+                            <Operation name="x"
+                                       isChosen={ this.state.operation === 'x' ? ' chosen' : '' }  
+                                       onClick={() => this.handleOperation('x')} />
+                            <Operation name="÷"
+                                       isChosen={ this.state.operation === '÷' ? ' chosen' : '' }  
+                                       onClick={() => this.handleOperation('÷')} />
                         </div>
                     </div>
 
@@ -80,7 +86,7 @@ class ExercisesGenerator extends React.Component {
 
 function Operation(props) {
     return (
-        <button className="operation-button" onClick={props.onClick}>
+        <button className={"operation-button" + props.isChosen} onClick={props.onClick}>
             {props.name}
         </button>
     );
