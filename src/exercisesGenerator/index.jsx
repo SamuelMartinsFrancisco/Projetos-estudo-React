@@ -40,19 +40,24 @@ class ExercisesGenerator extends React.Component {
 
     handleNewExercise() {
         let random = [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)];
-        this.setState({values: random});
+        if (this.state.showResult === true) {
+            this.setState((state) => ({values: random, showResult: !state.showResult}));
+        } else {
+            this.setState((state) => ({showResult: !state.showResult}));
+        }
         this.handleOperation(this.state.operation);
     }
 
     render() {
-
+        let showResult = this.state.showResult === true ? ' show-result' : '';
+        let hideResult = this.state.showResult === false ? 'hide-result' : '';
         return (
             <>
                 <div className="content">
                     <div className="result-and-operations">
-                        <div className="exercise-result">
-                            <span> {this.state.result} </span>
+                        <div className={"exercise-result" + showResult}>
                             <span> {this.state.exercise} </span>
+                            <span className={hideResult}> {this.state.result} </span>
                         </div>
 
                         <div className="operations">
@@ -71,7 +76,8 @@ class ExercisesGenerator extends React.Component {
                         </div>
                     </div>
 
-                    <NewExerciseOrResult name="Novo exercício" onClick={() => this.handleNewExercise()} />
+                    <NewExerciseOrResult name={this.state.showResult === true ? 'Novo exercício' : 'Mostrar resposta'}
+                                         onClick={() => this.handleNewExercise()} />
 
                     <div className="difficulties">
                         <Difficulty name="fácil" onClick={() => { }} />

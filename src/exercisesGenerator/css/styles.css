@@ -68,13 +68,40 @@ button {
   color: rgba(0, 0, 0, 0.55);
   line-height: 24px;
   position: relative;
-  top: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .exercise-result span:first-child {
   font-size: 30px;
   font-weight: 700;
   color: #000000;
+}
+
+.show-result {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.show-result span:first-child {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 24px;
+  top: 10px;
+  font-weight: 300;
+}
+
+.show-result span:last-child {
+  font-size: 35px;
+  font-weight: 700;
+  color: #556B2F;
+  top: 10px;
+}
+
+.hide-result {
+  display: none;
 }
 
 .operations {
@@ -126,7 +153,7 @@ button {
 }
 
 .exercise-button {
-  width: 115px;
+  width: 120px;
   height: 34px;
   background-color: #F4A460;
   border: 2px solid #F4A460;
