@@ -10,6 +10,7 @@ class ExercisesGenerator extends React.Component {
             result: '555',
             operation: '+',
             showResult: false,
+            difficulty: 20,
         };
     }
 
@@ -32,20 +33,26 @@ class ExercisesGenerator extends React.Component {
                 break;
             case '÷':
                 this.setState((state) => ({ exercise: `${state.values[0]} ÷ ${state.values[1]}`, 
-                                            result: state.values[0] / state.values[1], 
+                                            result: ((state.values[0] / state.values[1]) % 2) === 0 ? 
+                                                                            (state.values[0] / state.values[1]) : 
+                                                                            (state.values[0] / state.values[1]).toFixed(2).replace('.', ','), 
                                             operation: '÷' }));
                 break;
         }
     }
 
     handleNewExercise() {
-        let random = [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)];
+        let random = [Math.floor(Math.random() * 500), Math.floor(Math.random() * this.state.difficulty)];
         if (this.state.showResult === true) {
             this.setState((state) => ({values: random, showResult: !state.showResult}));
         } else {
             this.setState((state) => ({showResult: !state.showResult}));
         }
         this.handleOperation(this.state.operation);
+    }
+
+    handleDifficulty(difficulty) {
+        this.setState({difficulty: difficulty});
     }
 
     render() {
@@ -62,16 +69,16 @@ class ExercisesGenerator extends React.Component {
 
                         <div className="operations">
                             <Operation name="+" 
-                                       isChosen={ this.state.operation === '+' ? ' chosen' : '' } 
+                                       chosenOperation={ this.state.operation === '+' ? ' chosen' : '' } 
                                        onClick={() => this.handleOperation('+')} />
                             <Operation name="-" 
-                                       isChosen={ this.state.operation === '-' ? ' chosen' : '' } 
+                                       chosenOperation={ this.state.operation === '-' ? ' chosen' : '' } 
                                        onClick={() => this.handleOperation('-')} />
                             <Operation name="x"
-                                       isChosen={ this.state.operation === 'x' ? ' chosen' : '' }  
+                                       chosenOperation={ this.state.operation === 'x' ? ' chosen' : '' }  
                                        onClick={() => this.handleOperation('x')} />
                             <Operation name="÷"
-                                       isChosen={ this.state.operation === '÷' ? ' chosen' : '' }  
+                                       chosenOperation={ this.state.operation === '÷' ? ' chosen' : '' }  
                                        onClick={() => this.handleOperation('÷')} />
                         </div>
                     </div>
@@ -80,9 +87,15 @@ class ExercisesGenerator extends React.Component {
                                          onClick={() => this.handleNewExercise()} />
 
                     <div className="difficulties">
-                        <Difficulty name="fácil" onClick={() => { }} />
-                        <Difficulty name="médio" onClick={() => { }} />
-                        <Difficulty name="difícil" onClick={() => { }} />
+                        <Difficulty name="fácil"
+                                    chosenDifficulty={ this.state.difficulty === 20 ? ' chosen' : '' } 
+                                    onClick={() => this.handleDifficulty(20)} />
+                        <Difficulty name="médio" 
+                                    chosenDifficulty={ this.state.difficulty === 200 ? ' chosen' : '' }
+                                    onClick={() => this.handleDifficulty(200)} />
+                        <Difficulty name="difícil" 
+                                    chosenDifficulty={ this.state.difficulty === 500 ? ' chosen' : '' }
+                                    onClick={() => this.handleDifficulty(500)} />
                     </div>
                 </div>
             </>
@@ -92,7 +105,7 @@ class ExercisesGenerator extends React.Component {
 
 function Operation(props) {
     return (
-        <button className={"operation-button" + props.isChosen} onClick={props.onClick}>
+        <button className={"operation-button" + props.chosenOperation} onClick={props.onClick}>
             {props.name}
         </button>
     );
@@ -108,7 +121,7 @@ function NewExerciseOrResult(props) {
 
 function Difficulty(props) {
     return (
-        <button className="difficulty-button" onClick={props.onClick}>
+        <button className={"difficulty-button" + props.chosenDifficulty} onClick={props.onClick}>
             {props.name}
         </button>
     );

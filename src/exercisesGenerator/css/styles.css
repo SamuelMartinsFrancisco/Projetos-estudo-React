@@ -66,7 +66,7 @@ button {
 .exercise-result span {
   font-size: 15px;
   color: rgba(0, 0, 0, 0.55);
-  line-height: 24px;
+  line-height: 30px;
   position: relative;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -87,8 +87,6 @@ button {
 
 .show-result span:first-child {
   font-size: 15px;
-  color: rgba(0, 0, 0, 0.55);
-  line-height: 24px;
   top: 10px;
   font-weight: 300;
 }
@@ -147,7 +145,7 @@ button {
   right: 17px;
 }
 
-.chosen {
+.operation-button.chosen {
   background-color: #D2691E;
   border: 2px solid #000;
 }
@@ -191,5 +189,10 @@ button {
 
 .difficulty-button:hover {
   background-color: #D2691E;
+}
+
+.difficulty-button.chosen {
+  background-color: #D2691E;
+  border: 2px solid #000;
 }
 /*# sourceMappingURL=styles.css.map */
