@@ -1,0 +1,60 @@
+
+// Tests example -> exercisesGenerator.test.js
+// https://www.youtube.com/watch?v=pbwXsjVEMqg&t=517s
+// https://testing-library.com/docs/queries/about
+
+import { render, screen } from '@testing-library/react';
+import ExercisesGenerator from '.';
+import '@testing-library/jest-dom';
+
+describe('ExercisesGenerator component', () => {
+    test('should initialize the exercise as 550 + 5', () => {
+        // const {} = render(<ExercisesGenerator />);
+        render(<ExercisesGenerator />);
+
+        const initialExercise = screen.getByText('550 + 5');
+        expect(initialExercise).toBeInTheDocument();
+    });
+
+    test('should initialize the result span with the class hide-result', () => {
+        render(<ExercisesGenerator />);
+        
+        const initialResult = screen.getByText('555');
+        expect(initialResult).toHaveClass('hide-result');
+    });
+    
+    test('should initialize just the sum operation button with de class chosen', () => {
+        render(<ExercisesGenerator />);
+
+        const operations = [screen.getByText('+'), 
+                            screen.getByText('-'),
+                            screen.getByText('x'),
+                            screen.getByText('÷')];
+
+        expect(operations[0]).toHaveClass('chosen');
+        expect(operations[1]).not.toHaveClass('chosen');
+        expect(operations[2]).not.toHaveClass('chosen');
+        expect(operations[3]).not.toHaveClass('chosen');
+    });
+
+    test('should initialize in the easy level', () => {
+        render(<ExercisesGenerator />);
+
+        const difficulties = [screen.getByText('fácil'),
+                              screen.getByText('médio'),
+                              screen.getByText('difícil')];
+
+        expect(difficulties[0]).toHaveClass('chosen');
+        expect(difficulties[1]).not.toHaveClass('chosen');
+        expect(difficulties[2]).not.toHaveClass('chosen');
+    });
+
+    test('should initialize the new exercise button as Mostrar resposta', () => {
+        render(<ExercisesGenerator />);
+
+        const newExerciseButton = screen.getByText('Mostrar resposta');
+        expect(newExerciseButton).toBeInTheDocument();
+    });
+
+    // test('when the new exercise button is clicked, the exercise should change or the result be shown', () => {
+});
