@@ -83,7 +83,7 @@ class ExercisesGenerator extends React.Component {
                         </div>
                     </div>
 
-                    <NewExerciseOrResult name={this.state.showResult === true ? 'Novo exercício' : 'Mostrar resposta'}
+                    <NewExerciseOrResult name={this.state.showResult === true ? 'Novo Exercício' : 'Resposta'}
                                          onClick={() => this.handleNewExercise()} />
 
                     <div className="difficulties">

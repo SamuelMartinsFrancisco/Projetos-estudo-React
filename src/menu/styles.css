@@ -1,0 +1,114 @@
+.menu {
+    position: fixed;
+    top: 0px;
+    background-color: rgba(0,0,0,0.05);
+    width: 100vw;
+    height: 70px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+.menu button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 5%;
+    top: 10px;
+}
+
+.menu button svg {
+    width: 40px;
+    height: 40px;
+}
+
+.menu ol {
+    display: none;
+    transition: 0.3s;
+}
+
+.menu.opened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #FAEBD7;
+    transition: 0.3s;
+}
+
+.menu.opened ol {
+    display: block;
+    text-align: center;
+}
+
+.menu.opened ol li {
+    line-height: 34px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.menu.opened ol h3 {
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.menu.opened ol li a{
+    font-size: 18px;
+    text-decoration: none; 
+    font-weight: 300;
+    color: #000;
+}
+
+.menu.opened ol li:hover {
+    color: #FFA500;
+}
+
+
+@media(min-width: 750px) {
+    .menu {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        width: 30vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        border-left: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .menu button {
+        display: none;
+    }
+
+    .menu ol {
+        margin-left: 10%;
+        display: block;
+    }
+
+    .menu ol li {
+        line-height: 30px;
+        cursor: pointer;
+    }
+
+    .menu ol h3 {
+        position: relative;
+        left: -11%;
+        margin-bottom: 8px;
+        font-size: 18px;
+    }
+
+    .menu ol li a{
+        font-size: 16px;
+        text-decoration: none; 
+        font-weight: 300;
+        color: #000;
+    }
+
+    .menu ol li:hover {
+        color: #FFA500;
+    }
+}
