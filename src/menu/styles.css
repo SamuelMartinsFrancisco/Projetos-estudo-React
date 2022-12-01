@@ -112,3 +112,17 @@
         color: #FFA500;
     }
 }
+
+.home {
+    text-align: center;
+}
+
+.home h2 {
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.home p {
+    color: rgba(0,0,0,0.85);
+    font-size: 15px;
+}

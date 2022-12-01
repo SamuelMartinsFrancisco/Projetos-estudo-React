@@ -25,9 +25,9 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
                 <label>
-                    Nome:
+                    <p> Nome </p>
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Enviar" />
